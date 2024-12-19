@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Password Match Validation</title>
+    <style>
+        .error { color: red; }
+    </style>
+</head>
+<body>
+    <h1>Check Password Match</h1>
+    <form id="passwordForm">
+        Password: <input type="password" id="password" 
+        placeholder="Enter your password" required> <br><br>
+        Re-enter Password: <input type="password" id="confirmPassword" 
+        placeholder="Re-enter your password" required> <br><br>
+        <span id="errorMessage" class="error"></span> <br><br>
+        <button type="submit">Submit</button>
+    </form>
+
+    <script>
+        
+        document.getElementById("passwordForm").onsubmit = function(event) {
+            event.preventDefault(); 
+            let password = document.getElementById("password").value;
+            let confirmPassword = document.getElementById("confirmPassword").value;
+            let errorMessage = document.getElementById("errorMessage");
+            if (password !== confirmPassword) {
+                errorMessage.textContent = "Passwords are not same!";
+                setTimeout(function() {
+                    errorMessage.textContent = "";
+                }, 1000); 
+            } else {
+                alert("Passwords match. Form submitted!");
+            }
+        }
+    </script>
+</body>
+</html>
